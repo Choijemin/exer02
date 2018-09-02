@@ -36,12 +36,12 @@ public int addData(String id, String pass, String name, String gender) {
 public int addData(Map param) {
 	try {
 		Connection conn = DriverManager.getConnection(dburl, dbuser, dbpassword);
-		String sql = "insert into baseresult values(?, ?, ?, ?)";
+		String sql = "insert into account values(?, ?, ?, ?)";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1, (String)param.get("id"));
 		ps.setString(2, (String)param.get("pass"));
-		ps.setInt(3, (Integer)param.get("name"));
-		ps.setDouble(4, (Double)param.get("gender"));
+		ps.setString(3, (String)param.get("name"));
+		ps.setString(4, (String)param.get("gender"));
 		int n = ps.executeUpdate(); // send → receive 작업을 함.
 		conn.close();
 		return n;
@@ -64,8 +64,8 @@ public List<Map<String, Object>> getAllDatas() {
 				Map<String, Object> one = new LinkedHashMap<>();
 					one.put("id", rs.getString("id"));
 					one.put("pass", rs.getString("pass"));
-					one.put("name", rs.getInt("name"));
-					one.put("gender", rs.getDouble("gender"));
+					one.put("name", rs.getString("name"));
+					one.put("gender", rs.getString("gender"));
 				ret.add(one);
 			} while(rs.next());
 		}else {

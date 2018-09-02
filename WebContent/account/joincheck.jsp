@@ -7,13 +7,9 @@
 	request.setCharacterEncoding("UTF-8");
 	
 	String id = request.getParameter("id");
-	session.setAttribute("id", id);
 	String pass = request.getParameter("pass");
-	session.setAttribute("pass", pass);
 	String name = request.getParameter("name");
-	session.setAttribute("name", name);
 	String gender = request.getParameter("gender");
-	session.setAttribute("gender", gender);
 	
 	DummyDao dao = new DummyDao();
 	int r = dao.addData(id, pass, name, gender);
