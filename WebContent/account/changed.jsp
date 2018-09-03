@@ -3,9 +3,9 @@
 <%@ page import="beans.*" %>
 <%
 	String newPass = request.getParameter("pass");
-	String id = (String)session.getAttribute("id");
+	String logid =(String)session.getAttribute("logid");
 	AccountDao dao= new AccountDao();
-	int n = dao.setOnesPass(id, newPass);
+	int n = dao.setOnesPass(logid, newPass);
 %>
 <!DOCTYPE html>
 <html>
@@ -18,6 +18,7 @@
 <h3>비밀번호 변경</h3>
 
 비밀 번호 변경이 완료되었습니다.
+
 <br><br>
 <button>확 인</button>
 </form>

@@ -2,8 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/layout/top.jspf"%>
 <%
-	String id = (String)session.getAttribute("id");
-	session.setAttribute("id", id);
+	String logid =(String)session.getAttribute("logid");
 %>
 <h1>비밀번호 변경</h1>  
 <p style="font-size: small;">
