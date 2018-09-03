@@ -1,5 +1,7 @@
 package handlers;
 
+import java.util.LinkedHashSet;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -36,11 +38,6 @@ public class ApplicationHandler implements ServletContextListener {
 		// JSP에서 사용되는 application 이라는 이름의 객체.
 		ctx.setRequestCharacterEncoding("UTF-8");	// Listener 에서만 가능
 		// servlet 하위버전에는 없는 메서드
-		System.out.println("[SERVER] contextInitialized..done");
-	}
-	@Override
-	public void contextDestroyed(ServletContextEvent sce) {
-		long end = System.currentTimeMillis();
-		System.out.println("[SERVER] contextDestroyed..running time.."+(end-begin) +" ms");
+		ctx.setAttribute("users", new LinkedHashSet<>());
 	}
 }

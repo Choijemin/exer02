@@ -4,7 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>【Unknown】</title>
+<style type="text/css">
+	a{
+		text-decoration: none;
+	}
+</style>
 </head>
 <body style="text-align: center;">
-	<h1>? Unknown Application ?</h1>
+	<h1><a href="<%=application.getContextPath()%>/" style="text-decoration: none;">【app.Unknown】</a></h1>
