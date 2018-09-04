@@ -52,13 +52,13 @@ public class AccountDao extends Dao {
 		}
 	}
 
-	public int setOnesPass(String logid, String newPass) {
+	public int setOnesPass(String id, String newPass) {
 		try {
 			Connection conn = DriverManager.getConnection(dburl, dbuser, dbpassword);
 			String sql = "update account set pass=? where id=?";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, newPass);
-			ps.setString(2, logid);
+			ps.setString(2, id);
 			int n = ps.executeUpdate(); // send → receive 작업을 함.
 			conn.close();
 			return n;
@@ -67,24 +67,5 @@ public class AccountDao extends Dao {
 			return -1;
 		}
 	}
-  public int getaddMessage(String code, String sender, String receiver, String content, Date senddate, Date receivedate) {
-	  try {
-		  Connection conn = DriverManager.getConnection(dburl, dbuser, dbpassword);
-		  String sql = "insert into message values(?, ?, ?, ?, ?, ?)";
-		  PreparedStatement ps = conn.prepareStatement(sql);
-		  ps.setString(1, code);
-		  ps.setString(2, sender);
-		  ps.setString(3, receiver);
-		  ps.setString(4, content);
-		  ps.setDate(5, senddate);
-		  ps.setDate(6, receivedate);
-		  conn.close();
-		  int n = ps.executeUpdate(); // send → receive 작업을 함.
-		  conn.close();
-		  return n;
-	  } catch (Exception e) {
-			e.printStackTrace();
-			return -1;
-		}
-    }
+ 
  }

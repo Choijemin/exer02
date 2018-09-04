@@ -2,10 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ page import="beans.*" %>
 <%
-	String newPass = request.getParameter("pass");
-	String logid =(String)session.getAttribute("logid");
+	String newPass = request.getParameter("newPass");
+	String id =(String)session.getAttribute("logid");
 	AccountDao dao= new AccountDao();
-	int n = dao.setOnesPass(logid, newPass);
+	int n = dao.setOnesPass(id, newPass);
 %>
 <!DOCTYPE html>
 <html>
@@ -14,7 +14,7 @@
 <title>비밀번호 변경</title>
 </head>
 <body style="text-align: center">
-<form action="../login.jsp">
+<form action="../index.jsp">
 <h3>비밀번호 변경</h3>
 
 비밀 번호 변경이 완료되었습니다.

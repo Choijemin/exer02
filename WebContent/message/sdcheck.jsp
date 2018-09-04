@@ -5,16 +5,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	AccountDao dao= new AccountDao();
+	
 	String sender = (String)session.getAttribute("logid");
 	String receiver = request.getParameter("receiver");
-	String content = request.getParameter("senddate");
+	String content = request.getParameter("content");
 	String code = UUID.randomUUID().toString().split("-")[0];
 	java.sql.Date senddate = new java.sql.Date(System.currentTimeMillis());
-	java.sql.Date receivedate = new java.sql.Date(System.currentTimeMillis());
 	
-	int m = dao.getaddMessage(code, sender, receiver, content, senddate, receivedate);
+	SendDao dao = new SendDao();
+	int m = dao.getaddMessage(code, sender, receiver, content, senddate);
+	
+	if (m != 1) {
+		session.setAttribute("senterror", 1);
+		response.sendRedirect(application.getContextPath() + "/message/send.jsp");
+		// response.sendRedirect(application.getContextPath() + "/message/send.jsp?rst=fail");
+	} else {
 %>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,5 +43,6 @@
 <form action = "../index.jsp">
 	<button> 홈으로 </button>
 </form>
+<% } %>
 </body>
 </html>

@@ -21,7 +21,7 @@
 	</p>
 	<p>
 		<b>비밀번호 재확인(*)</b><br/>
-		<input type="password" style="font-size: 16px; padding: 5px" name="pass" placeholder="password confirm"/>
+		<input type="password" style="font-size: 16px; padding: 5px" name="newPass" placeholder="password confirm"/>
 	</p>
 	<p>
 		<button type="submit" style="font-size: 16px; padding: 5px">변 경 적 용</button>
