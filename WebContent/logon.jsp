@@ -5,8 +5,8 @@
 <%@ page import="java.util.*" %>
 <%
 	String logid =request.getParameter("logid");
-	String logpass = request.getParameter("logpass");
-	
+	String logpass = request.getParameter("logpass");	
+	String uri = (String)request.getAttribute("uri");
 	AccountDao dao= new AccountDao();
 	
 	Map acc = dao.getAccountById(logid);
@@ -31,7 +31,8 @@
 		}
 		
 		ldao.addLog(logid);
-		response.sendRedirect(application.getContextPath()+"/");
-	}
+		response.sendRedirect(application.getContextPath()+"/" + uri);
+  }
 }
 %>
+

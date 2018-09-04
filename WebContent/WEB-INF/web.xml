@@ -12,6 +12,17 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
+	<filter>
+		<filter-name>f</filter-name>
+		<filter-class>filters.Filter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>f</filter-name>
+		<url-pattern>/message/*</url-pattern>
+		<url-pattern>/account/*</url-pattern>
+		<url-pattern>/index.jsp</url-pattern>
+		<url-pattern>/logout.jsp</url-pattern>
+	</filter-mapping>
 	<listener>
 		<listener-class>handlers.ApplicationHandler</listener-class>
 	</listener>
