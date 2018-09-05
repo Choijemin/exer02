@@ -18,12 +18,18 @@
 </p>
 <hr>
 <p style="text-align: right;">
-	<a href="<%=application.getContextPath()%>/message/msg.jsp"><button type="button">쪽지함</button></a>	
+	<a href="<%=application.getContextPath()%>/board/board.jsp"><button type="button">글쓰기</button></a>	
 	<a href="<%=application.getContextPath()%>/message/send.jsp"><button type="button">쪽지보내기</button></a>	
 	<a href="<%=application.getContextPath()%>/account/change.jsp"><button type="button">비밀번호변경</button></a>	
 	<a href="<%=application.getContextPath()%>/logout.jsp"><button type="button">로그아웃</button></a>	
 </p>
 <p>
-	<img src="<%=application.getContextPath()%>/image/pro.png" style="width: 10%; border-radius: 30px"/>
+	<b><%= logid %>님</b>
+</p>
+<p>
+	<img src="<%=application.getContextPath()%>/image/pro.png" style="width: 10%; border-radius: 30px"/><br><br>
+	<a href="<%=application.getContextPath()%>/message/msg.jsp"><button type="button">쪽지함</button></a>	
+	<a href="<%=application.getContextPath()%>/message/send.jsp"><button type="button">게시판</button></a>	
+	
 </p>
 <%@ include file="/layout/bottom.jspf"%>

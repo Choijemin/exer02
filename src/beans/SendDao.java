@@ -40,12 +40,13 @@ public class SendDao extends Dao {
 				if(rs.next()) {
 					ret = new ArrayList<>();
 					do {
-						Map<String, Object> one = new LinkedHashMap<>();
+						Map one = new LinkedHashMap<>();
 							one.put("code ", rs.getString("code "));
 							one.put("sender", rs.getString("sender"));
 							one.put("receiver ", rs.getString("receiver "));
 							one.put("content", rs.getString("content"));
 							one.put("senddate ", rs.getDate("senddate "));
+							one.put("receivedate", rs.getDate("receivedate"));
 						ret.add(one);
 					} while(rs.next());
 				} else {

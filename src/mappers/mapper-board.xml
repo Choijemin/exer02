@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+	<insert id="addDataUsingMap" parameterType="java.util.HashMap">
+		insert into baseresult values(#{serial}, #{player}, #{tried}, #{elapsed}, sysdate)
+	</insert>
+	
+	<select id="getAllDataUsingMap" resultType="java.util.HashMap">
+		select * from baseresult order by tried asc, elapsed asc
+	</select> 
+	
+	<select id="getPlayer" resultType="java.lang.String">
+		select distinct player from baseresult order by player asc
+	</select> 
+	
+	<select id="getOneDataUsingMap" resultType="java.util.HashMap" 
+													parameterType="java.lang.String">
+		select * from baseresult where serial=#{serial }
+	</select> 
+	
+</mapper>
