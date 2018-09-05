@@ -29,13 +29,14 @@ public class SendDao extends Dao {
 				return -1;
 			}
 	    }
-	 public List<Map<String, Object>> getreciver(String receiverdate) {
+	 public List<Map> getreciver(String receiver) {
 			try {
 				Connection conn = DriverManager.getConnection(dburl, dbuser, dbpassword);
 				String sql = "select * from message where receiver=? order by senddate desc";
 				PreparedStatement ps = conn.prepareStatement(sql);
 				ResultSet rs = ps.executeQuery();
-				List<Map<String, Object>> ret;
+				ps.setString(1, receiver);
+				List<Map> ret;
 				if(rs.next()) {
 					ret = new ArrayList<>();
 					do {
@@ -44,19 +45,17 @@ public class SendDao extends Dao {
 							one.put("sender", rs.getString("sender"));
 							one.put("receiver ", rs.getString("receiver "));
 							one.put("content", rs.getString("content"));
-							one.put("senddate ", rs.getString("senddate "));
-							one.put("receivedate", rs.getString("receivedate"));
+							one.put("senddate ", rs.getDate("senddate "));
 						ret.add(one);
 					} while(rs.next());
-				}else {
+				} else {
 					ret = null;
 				}
 				conn.close();
 				return ret;
-			} catch(Exception e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 				return null;
 			}
 		}
-	
 }

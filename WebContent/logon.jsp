@@ -31,7 +31,7 @@
 		}
 		
 		ldao.addLog(logid);
-		response.sendRedirect(application.getContextPath()+"/" + uri);
+		response.sendRedirect(application.getContextPath()+"/");
   }
 }
 %>
