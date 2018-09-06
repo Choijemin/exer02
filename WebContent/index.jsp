@@ -29,7 +29,7 @@
 <p>
 	<img src="<%=application.getContextPath()%>/image/pro.png" style="width: 10%; border-radius: 30px"/><br><br>
 	<a href="<%=application.getContextPath()%>/message/msg.jsp"><button type="button">쪽지함</button></a>	
-	<a href="<%=application.getContextPath()%>/message/send.jsp"><button type="button">게시판</button></a>	
+	<a href="<%=application.getContextPath()%>/board/list.jsp"><button type="button">게시판</button></a>	
 	
 </p>
 <%@ include file="/layout/bottom.jspf"%>

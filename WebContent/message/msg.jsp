@@ -31,11 +31,12 @@
 	<% 
 		if(id.equals(receiver)) {
 		for(int i = 0; i < msg.size(); i++) {
-			Map<String, Object> mg = msg.get(i);
+			Map mg = msg.get(i);
 	%>
 		<%= mg.get("sender") %>님이 <%= mg.get("receiver") %>님에게 메세지를 보냈습니다.<br>
 		<%= mg.get("senddate") %><br>
 		<%= mg.get("content") %>
+		<hr>
 		<% } %>	
 	<% } %>
 
