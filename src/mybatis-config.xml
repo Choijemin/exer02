@@ -15,7 +15,7 @@
 		</environment>
 	</environments>
 	<mappers>
-		<mapper resource="mappers/mapper-board.xml"/> 
+		<mapper resource="mappers/board.xml"/> 
 		<mapper resource="mappers/goodlog.xml"/> 
 	</mappers>
 </configuration>

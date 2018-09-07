@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
@@ -6,11 +6,6 @@
 	<insert id="addDataUsingMap" parameterType="java.util.HashMap">
 		insert into goodlog values(#{actor}, #{target})
 	</insert>
-	
-	<update id="incGoodByNo" parameterType="java.lang.Integer">
-		update goodlog set good = good + 1 where no=#{no}
-	</update>
-	
 	<select id="getSomeDataByActor" resultType="java.lang.Integer" parameterType="java.lang.String">
 		select target from goodlog where actor=#{actor}
 	</select>

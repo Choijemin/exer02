@@ -25,6 +25,18 @@ public class BoardDao {
 		factory = builder.build(is);
 	}
 	
+	public int increaseGoodByNo(int no) {
+		SqlSession sql = factory.openSession();
+		try {
+			int r = sql.insert("board.incGoodByNo", no);
+			if (r == 1)
+				sql.commit();
+			return r;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
 	
 	public int addBoard(Map param) {
 		SqlSession sql = factory.openSession(); // JDBCÀÇ Connect°úÁ¤

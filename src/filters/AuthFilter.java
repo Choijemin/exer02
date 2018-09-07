@@ -9,16 +9,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class Filter extends HttpFilter {
-
+public class AuthFilter extends HttpFilter {
+	@Override
 	protected void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		HttpSession session = request.getSession();
-		if(session.getAttribute("freepass") != null) {
+		System.out.println("[AuthFilter] at " + request.getRequestURI());
+		HttpSession session =request.getSession();
+		if(session.getAttribute("auth")!=null) {
 			chain.doFilter(request, response);
-			response.sendRedirect(request.getContextPath()+"/");
+		}else {
+			session.setAttribute("dest", request.getRequestURI());
+			
+			response.sendRedirect(request.getContextPath()+"/login.jsp");
 		}
 		
-		request.getCookies();
 	}
+
 }

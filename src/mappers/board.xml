@@ -6,16 +6,16 @@
 	<insert id="addDataUsingMap" parameterType="java.util.HashMap">
 		insert into board values(board_seq.nextval, #{writer}, #{title}, sysdate, #{content}, 0, #{attach})
 	</insert>
-	
 	<select id="getAllDataUsingMap" resultType="java.util.HashMap">
 		select * from board order by leftdate desc
+	</select>
+	
+	<select id="getOneDataUsingMapByNo" resultType="java.util.HashMap" parameterType="java.lang.Integer">
+		select * from board where no=#{no }
 	</select> 
 	
 	<update id="incGoodByNo" parameterType="java.lang.Integer">
 		update board set good = good + 1 where no=#{no}
 	</update>
 	
-	<select id="getOneDataUsingMapByNo"  resultType="java.util.HashMap" parameterType="java.lang.Integer">
-		select * from board where no=#{no }
-	</select> 
 </mapper>
