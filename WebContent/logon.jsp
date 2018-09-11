@@ -4,35 +4,36 @@
 <%@ page import="beans.*" %>
 <%@ page import="java.util.*" %>
 <%
+	String freepass = request.getParameter("keep");
 	String logid =request.getParameter("logid");
-	String logpass = request.getParameter("logpass");	
-	String uri = (String)request.getAttribute("uri");
-	AccountDao dao= new AccountDao();
+	String logpass = request.getParameter("logpass");
 	
+	// 로그인 유지 버튼을 눌렀을 때, 쿠키가 저장되게...!
+	if(freepass != null) {
+		Cookie t = new Cookie("freepass", logid);
+		String domain = t.getDomain();
+		t.setMaxAge(60*60*24*30);
+		response.addCookie(t);
+	} else {
+		
+	}
+	
+	AccountDao dao= new AccountDao();
 	Map acc = dao.getAccountById(logid);
 	if(acc== null || !acc.get("pass").equals(logpass)) {
 		response.sendRedirect(application.getContextPath()+"/login.jsp?mode=fail");	
 	}else {
-		Set<String> set = (Set)application.getAttribute("users");
-		if(set.contains(logid)) {
-			throw new RuntimeException(logid + "is alreay logon");
-		}else {
-			set.add(logid);
-			
-			application.setAttribute("users", set); // 생략이 가능하긴 하다. why?
-		
-			session.setAttribute("auth", true);
-			session.setAttribute("logid", logid);
-		
-			LoginLogDao ldao = new LoginLogDao();
-			Map log = ldao.getLatesetLogById(logid);
-		if(log != null) {
-			session.setAttribute("latest", log.get("time"));
-		}
-		
-		ldao.addLog(logid);
-		response.sendRedirect(application.getContextPath()+"/");
-  }
-}
+	session.setAttribute("auth", true);
+	session.setAttribute("logid", logid);
+	
+	LoginLogDao ldao = new LoginLogDao();
+	Map log = ldao.getLatesetLogById(logid);
+	if(log != null) {
+		session.setAttribute("latest", log.get("time"));
+	}
+	
+	ldao.addLog(logid);
+	response.sendRedirect(application.getContextPath()+"/");
+	}
 %>
 

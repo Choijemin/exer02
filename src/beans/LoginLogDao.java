@@ -47,4 +47,5 @@ public class LoginLogDao extends Dao {
 			return null;
 		}
 	}
+	
 }

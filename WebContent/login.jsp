@@ -19,7 +19,7 @@
 		<b>계정 비밀번호(*)</b><br/>
 		<input type="password" style="font-size: 16px; padding: 5px" name="logpass" placeholder="계정 비밀번호"/>
 	</p>
-	<%if(mode !=null && mode.equals("fail")){ %>
+	<%if(mode != null && mode.equals("fail")){ %>
 	<p style="color: red; font-size: small;">
 		아이디 또는 비밀번호를 확인하세요. 
 	</p>
